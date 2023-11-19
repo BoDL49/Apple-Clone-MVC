@@ -1,0 +1,73 @@
+﻿@model AppleMVC.Models.User
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<style>
+    h2 {
+        background: lightgreen;
+        font-size: 50px;
+        text-align: center;
+        justify-items: center;
+    }
+
+    div {
+        padding: 5px;
+    }
+</style>
+
+<h2>QUẢN LÝ NGƯỜI DÙNG</h2>
+
+<h3>Bạn chắc chắn xoá người dùng này?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>UserName</dt>
+        <dd>@Html.DisplayFor(model => model.UserName)</dd>
+        <dt>
+            Số Điện Thoại
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserPhone)
+        </dd>
+
+        <dt>
+            Tên Người Dùng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameUser)
+        </dd>
+
+        <dt>
+            Email
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserEmail)
+        </dd>
+
+        <dt>
+            Vai Trò
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Role.RoleName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xoá" class="btn btn-danger" />
+            @Html.ActionLink("Danh sách", "Index", null, new { @class = "btn btn-info" })
+        </div>
+    }
+</div>
+
+

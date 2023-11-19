@@ -1,0 +1,88 @@
+﻿@model IEnumerable<AppleMVC.Models.ProductDetail>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    h2 {
+        background: lightgreen;
+        font-size: 50px;
+        text-align: center;
+        justify-items: center;
+    }
+
+    div {
+        padding: 5px;
+    }
+</style>
+
+<h2>QUẢN LÝ SẢN PHẨM CHI TIẾT</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Tên Sản Phẩm
+        </th>
+        <th>
+            Ảnh Sản Phẩm
+        </th>
+        <th>
+            Màu
+        </th>
+        <th>
+            Kích Thước Màn Hình
+        </th>
+        <th>
+            Dung Lượng
+        </th>
+        <th>
+            Giá
+        </th>
+        <th>
+            Tên AppleCare
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.ProductName)
+            </td>
+            <td>
+                <img src="@Url.Content(item.ProductImage)" width="150" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Color.ColorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Screen.ScreenName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Memory.MemoryName)
+            </td>
+            <td>
+                @item.Price.ToString("#,##0 VND")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppleCareName)
+            </td>
+            <td>
+                @Html.ActionLink("Chi tiết", "Details", new { id = item.ProductDetailID }, new { @class = "btn btn-sm btn-info" }) |
+                @Html.ActionLink("Sửa", "Edit", new { id = item.ProductDetailID }, new { @class = "btn btn-sm btn-success" }) |
+                @Html.ActionLink("Xóa", "Delete", new { id = item.ProductDetailID }, new { @class = "btn btn-sm btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div>
+    <p>
+        @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+</div>
+

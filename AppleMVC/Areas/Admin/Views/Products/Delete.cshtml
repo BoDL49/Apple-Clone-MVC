@@ -1,0 +1,63 @@
+﻿@model AppleMVC.Models.Product
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    h2 {
+        background: lightgreen;
+        font-size: 50px;
+        text-align: center;
+        justify-items: center;
+    }
+
+    div {
+        padding: 5px;
+    }
+</style>
+
+<h2>QUẢN LÝ SẢN PHẨM</h2>
+
+<h3>Bạn Thật Sự Muốn Xoá Sản Phẩm Này?</h3>
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên Sản Phẩm
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductName)
+        </dd>
+
+        <dt>
+            Tên Loại Sản Phẩm
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.CategoryName)
+        </dd>
+
+        <dt>
+            Tên Loại Model
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Model.ModelName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xoá" class="btn btn-danger" />
+            @Html.ActionLink("Danh sách", "Index", null, new { @class = "btn btn-info" })
+        </div>
+    }
+</div>

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<AppleMVC.Models.Model>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    h2 {
+        background: lightgreen;
+        font-size: 50px;
+        text-align: center;
+        justify-items: center;
+    }
+
+    div {
+        padding: 5px;
+    }
+</style>
+
+<h2>QUẢN LÝ MODEL</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            Tên Model
+        </th>
+        <th>
+            Tên Loại Sản Phẩm
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModelName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.CategoryName)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "Edit", new { id = item.ModelID }, new { @class = "btn btn-sm btn-success" }) |
+                @Html.ActionLink("Xóa", "Delete", new { id = item.ModelID }, new { @class = "btn btn-sm btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div>
+    <p>
+        @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+</div>

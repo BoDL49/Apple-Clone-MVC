@@ -1,0 +1,46 @@
+﻿@model AppleMVC.Models.Role
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    h2 {
+        background: lightgreen;
+        font-size: 50px;
+        text-align: center;
+        justify-items: center;
+    }
+
+    div {
+        padding: 5px;
+    }
+</style>
+
+<h2>QUẢN LÝ VAI TRÒ</h2>
+
+<h3>Bạn Chắc Chắn Sẽ Xoá Vai Trò Này?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên Vai Trò
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RoleName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xoá" class="btn btn-danger" />
+            @Html.ActionLink("Danh sách", "Index", null, new { @class = "btn btn-info" })
+        </div>
+    }
+</div>

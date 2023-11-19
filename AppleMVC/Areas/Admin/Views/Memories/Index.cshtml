@@ -1,0 +1,53 @@
+﻿@model IEnumerable<AppleMVC.Models.Memory>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    h2 {
+        background: lightgreen;
+        font-size: 50px;
+        text-align: center;
+        justify-items: center;
+    }
+
+    div {
+        padding: 5px;
+    }
+</style>
+
+<h2>QUẢN LÝ DUNG LƯỢNG</h2>
+
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>
+            Loại Dung Lượng
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.MemoryID)</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MemoryName)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "Edit", new { id = item.MemoryID }, new { @class = "btn btn-sm btn-success" }) |
+                @Html.ActionLink("Xóa", "Delete", new { id = item.MemoryID }, new { @class = "btn btn-sm btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div>
+    <p>
+        @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+</div>
+

@@ -1,0 +1,69 @@
+﻿@model AppleMVC.Models.ProductDetail
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    h2 {
+        background: lightgreen;
+        font-size: 50px;
+        text-align: center;
+        justify-items: center;
+    }
+
+    div {
+        padding: 5px;
+    }
+
+    .ProImg {
+        position: relative;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        max-width: 100%;
+        max-height: 100%;
+        margin: auto;
+    }
+
+    img {
+        opacity: 0.99;
+        vertical-align: middle;
+    }
+</style>
+
+<h2>QUẢN LÝ SẢN PHẨM CHI TIẾT</h2>
+
+<div>
+    <hr />
+    <div class="row">
+        <div class="col-md-4" style="border: 1px solid grey; border-radius: 10px; background-color:whitesmoke; align-items: center; justify-items: center">
+            <img class="ProImg" src="@Url.Content(Model.ProductImage)" />
+        </div>
+        <div class="col-md-8" style="padding:10px 30px;">
+            <h1>@Html.DisplayFor(model => model.Product.ProductName)</h1>
+            <h4>Tên Loại Sản Phẩm</h4>
+            <p>@Html.DisplayFor(model => model.Product.ProductName)</p>
+            <h4>Màu</h4>
+            <p>@Html.DisplayFor(model => model.Color.ColorName)</p>
+            <h4>Kích Thước Màn Hình</h4>
+            <p>@Html.DisplayFor(model => model.Screen.ScreenName)</p>
+            <h4>Dung Lượng</h4>
+            <p>@Html.DisplayFor(model => model.Memory.MemoryName)</p>
+            <h4>Tên Loại Model</h4>
+            <p> @Html.DisplayFor(model => model.Product.Model.ModelName)</p>
+            <h4>Giá</h4>
+            <p>@Html.DisplayFor(model => model.Price)</p>
+            <h4>AppleCare Name</h4>
+            <p>@Html.DisplayFor(model => model.AppleCareName)</p>
+        </div>
+    </div>
+</div>
+<div>
+    <p style="text-align: center">
+        @Html.ActionLink("Cập nhật", "Edit", new { id = Model.ProductDetailID }, new { @class = "btn btn-primary" })
+        @Html.ActionLink("Danh sách", "Index", null, new { @class = "btn btn-info" })
+    </p>
+</div>

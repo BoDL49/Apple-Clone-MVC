@@ -1,0 +1,29 @@
+﻿@model IEnumerable<AppleMVC.Models.Category>
+
+
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" />
+<style>
+    .menu {
+        display: inline;
+        padding-left: 10px;
+        padding-right: 10px;
+
+    }
+
+    .item {
+        display: inline;
+        font-size: 20px;
+        line-height: 0.8;
+    }
+</style>
+@foreach (var item in Model)
+{
+    @*<h2>
+            @Html.DisplayFor(modelItem => item.CategoryName)
+        </h2>*@
+    <h4 class="menu">@Html.ActionLink(item.CategoryName, "Index", "Product", new { category = item.CategoryID }, new { @class = "nav-link item" })</h4>
+}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+

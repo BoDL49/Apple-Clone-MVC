@@ -1,0 +1,140 @@
+﻿@model IEnumerable<AppleMVC.Models.User>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    h2 {
+        background: lightgreen;
+        font-size: 50px;
+        text-align: center;
+        justify-items: center;
+    }
+
+    div {
+        padding: 5px;
+    }
+</style>
+
+<h2>QUẢN LÝ NGƯỜI DÙNG</h2>
+<hr />
+<h3>Người Dùng</h3>
+    <table class="table">
+        <tr>
+            <th>
+                UserName
+            </th>
+            <th>
+                Mật Khẩu
+            </th>
+            <th>
+                Tên Người Dùng
+            </th>
+            <th>
+                Số Điện Thoại
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Vai Trò
+            </th>
+            @*<th></th>*@
+        </tr>
+
+
+        @foreach (var item in Model.Where(p => p.RoleID == 0))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserPassword)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameUser)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserPhone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Role.RoleName)
+                </td>
+                @*<td>
+                    @if (item.RoleID == 1)
+                    {
+                        @Html.ActionLink("Sửa", "Edit", new { id = item.UserName }, new { @class = "btn btn-sm btn-success pd" });
+                        @Html.ActionLink("Xóa", "Delete", new { id = item.UserName }, new { @class = "btn btn-sm btn-danger" });
+                    }
+                </td>*@
+            </tr>
+        }
+
+    </table>
+
+<h3>Admin</h3>
+<table class="table">
+    <tr>
+        <th>
+            UserName
+        </th>
+        <th>
+            Mật Khẩu
+        </th>
+        <th>
+            Tên Người Dùng
+        </th>
+        <th>
+            Số Điện Thoại
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Vai Trò
+        </th>
+        <th></th>
+    </tr>
+
+
+    @foreach (var item in Model.Where(p => p.RoleID == 1))
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserPassword)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameUser)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Role.RoleName)
+            </td>
+            <td>
+                        @Html.ActionLink("Sửa", "Edit", new { id = item.UserName }, new { @class = "btn btn-sm btn-success pd" }) |
+                        @Html.ActionLink("Xóa", "Delete", new { id = item.UserName }, new { @class = "btn btn-sm btn-danger" })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div>
+    <p>
+        @Html.ActionLink("Thêm mới", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+</div>

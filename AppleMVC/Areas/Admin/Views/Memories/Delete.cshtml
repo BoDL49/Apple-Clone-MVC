@@ -1,0 +1,46 @@
+﻿@model AppleMVC.Models.Memory
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    h2 {
+        background: lightgreen;
+        font-size: 50px;
+        text-align: center;
+        justify-items: center;
+    }
+
+    div {
+        padding: 5px;
+    }
+</style>
+
+<h2>QUẢN LÝ DUNG LƯỢNG</h2>
+
+<h3>Bạn Thật Sự Muốn Xoá Dung Lượng Này?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Loại Dung Lượng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MemoryName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xoá" class="btn btn-primary" />
+            @Html.ActionLink("Danh sách", "Index", null, new { @class = "btn btn-info" })
+        </div>
+    }
+</div>
